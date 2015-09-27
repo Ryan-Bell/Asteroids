@@ -2,16 +2,15 @@
 
 class Asteroid
 {
-  PVector velocity;
-  PVector position;
-  float direction;
+  PVector asteroidVelocity;
+  PVector asteroidPosition;
+  float asteroidDirection;
   
   Asteroid(int px, int py, int vx, int vy, float inD)
   {
-    velocity = new PVector(px, py);
-    position = new PVector(vx, vy);
-    direction = inD;
-    
+    asteroidVelocity = new PVector(px, py);
+    asteroidPosition = new PVector(vx, vy);
+    asteroidDirection = inD;
   }
   
   void drawAsteroid()

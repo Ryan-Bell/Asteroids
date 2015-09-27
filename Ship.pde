@@ -1,21 +1,26 @@
 boolean[] keys;
 class Ship
 {
-  PVector acceleration;
-  PVector velocity;
-  PVector position;
+  PVector shipAcceleration;
+  PVector shipVelocity;
+  PVector shipPosition;
   PShape shipShape;
-  float direction;
-  int health;
-
+  float shipDirection;
+  int shipHealth;
+  int shipLastFire;
+  int shipDelayTime;
+  float shipMaxSpeed;
   
   Ship()
   {
-    acceleration = new PVector();
-    velocity = new PVector();
-    position = new PVector(width/2, height/2);
-    direction = 90;
-    health = 100;
+    shipAcceleration = new PVector();
+    shipVelocity = new PVector();
+    shipPosition = new PVector(width/2, height/2);
+    shipDirection = 0;
+    shipHealth = 100;
+    shipLastFire = 0;
+    shipDelayTime = 300;
+    //shipMaxSpeed = 0;
     keys = new boolean[5];
     shipShape = createShape();
     shipShape.beginShape();
@@ -34,14 +39,39 @@ class Ship
   void drawShip()
   {
     updateShip();
-    shape(shipShape, position.x, position.y, 20,20);
+    shipShape.resetMatrix();
+    shipShape.rotate(radians(shipDirection));
+    shape(shipShape, shipPosition.x, shipPosition.y, 20,20);
   }
   
 
   
   void updateShip()
   {
-    
+    shipAcceleration.x = 0;
+    shipAcceleration.y = 0;
+    if(keys[0])
+    {
+      shipAcceleration.x = 0.5 * cos(radians(shipDirection)  - PI/2);
+      shipAcceleration.y = 0.5 * sin(radians(shipDirection) - PI/2);
+    }
+    if(keys[1] && !keys[2])
+      {shipDirection -= 5;}
+    if(keys[2] && !keys[1])
+      {shipDirection += 5;}
+    shipVelocity.add(shipAcceleration);
+    //shipVelocity.x = shipMaxSpeed * (shipVelocity.x/shipVelocity.mag());
+    //shipVelocity.y = shipMaxSpeed * (shipVelocity.y/shipVelocity.mag());
+    shipPosition.add(shipVelocity);
+    shipVelocity.mult(.95);
+    if(keys[4])
+    {
+      if(millis() - shipLastFire > shipDelayTime)
+        {
+          shipLastFire = millis();
+          manager.fireBullet(shipPosition, shipVelocity, shipDirection);
+        }
+    }
   }
 }
 

@@ -1,12 +1,12 @@
 
 class Mothership
 {
-  PVector position;
-  int health;
+  PVector motherPosition;
+  int motherHealth;
   Mothership()
   {
-    health = 100;
-    position = new PVector();
+    motherHealth = 100;
+    motherPosition = new PVector();
   }
   
   void drawMothership()
