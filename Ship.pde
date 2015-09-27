@@ -64,6 +64,12 @@ class Ship
     //shipVelocity.y = shipMaxSpeed * (shipVelocity.y/shipVelocity.mag());
     shipPosition.add(shipVelocity);
     shipVelocity.mult(.95);
+    shipPosition.x %= width;
+    if(shipPosition.x < -10)
+      {shipPosition.x = width;}
+    shipPosition.y %= height;
+    if(shipPosition.y < -10)
+      {shipPosition.y = height;}
     if(keys[4])
     {
       if(millis() - shipLastFire > shipDelayTime)

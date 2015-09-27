@@ -15,7 +15,8 @@ class Asteroid
   
   void drawAsteroid()
   {
-    updateAsteroid(); 
+    updateAsteroid();
+    
   }
   
   void updateAsteroid()
