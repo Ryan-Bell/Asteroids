@@ -4,10 +4,13 @@ class Asteroid
 {
   PVector velocity;
   PVector position;
-  PVector direction;
+  float direction;
   
-  Asteroid()
+  Asteroid(int px, int py, int vx, int vy, float inD)
   {
+    velocity = new PVector(px, py);
+    position = new PVector(vx, vy);
+    direction = inD;
     
   }
   
