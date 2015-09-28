@@ -46,7 +46,11 @@ class Ship
   
   void destroyShip()
   {
-    print("You Lose"); 
+    fill(150);
+    textAlign(CENTER,CENTER);
+    textSize(72);
+    noLoop();
+    text("You Lose",width/2, height/2);
   }
   
   void updateShip()

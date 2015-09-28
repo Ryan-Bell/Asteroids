@@ -59,6 +59,8 @@ class GameManager
         {
           //collide with bullet
           testHolder.split();
+          bulletHolder.bulletHidden = true;
+          j++;
         }
       }
     }

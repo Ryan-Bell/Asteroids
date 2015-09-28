@@ -76,6 +76,8 @@ class Asteroid
     asteroidSize +=.01; 
     if(asteroidSize < 10)
       die();
+    if(asteroidSize > 50)
+      split();
   }
   
   void split()
