@@ -44,7 +44,10 @@ class Ship
     shape(shipShape, shipPosition.x, shipPosition.y, 10,10);
   }
   
-
+  void destroyShip()
+  {
+    print("You Lose"); 
+  }
   
   void updateShip()
   {

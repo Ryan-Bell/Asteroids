@@ -27,6 +27,7 @@ class GameManager
   
   void drawGame()
   {
+    checkCollisions();
     fill(0,50);
     rect(0,0,width,height);
     fill(255);
@@ -36,6 +37,31 @@ class GameManager
       {asteroids.get(i).drawAsteroid();}
     for(int i = 0; i < bullets.size(); i++)
       {bullets.get(i).drawBullet();}
+  }
+  
+  void checkCollisions()
+  {
+    Asteroid testHolder;
+    Bullet bulletHolder;
+    for(int i = 0; i < asteroids.size(); i++)
+    {
+      testHolder = asteroids.get(i);
+      if(dist(testHolder.asteroidPosition.x, testHolder.asteroidPosition.y, player.shipPosition.x, player.shipPosition.y) < testHolder.asteroidSize)
+      {
+        //collide with player
+        player.destroyShip();
+      }
+      for(int j = 0; j < bullets.size(); j++)
+      {
+        bulletHolder = bullets.get(j);
+        if(bulletHolder.bulletHidden){continue;}
+        if(dist(testHolder.asteroidPosition.x, testHolder.asteroidPosition.y, bulletHolder.bulletPosition.x, bulletHolder.bulletPosition.y) < testHolder.asteroidSize)
+        {
+          //collide with bullet
+          testHolder.split();
+        }
+      }
+    }
   }
   
   void fireBullet(PVector pos, PVector spe, float dir)

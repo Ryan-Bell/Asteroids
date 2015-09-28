@@ -29,7 +29,7 @@ class Asteroid
     asteroidVelocity = new PVector(vx, vy);
     asteroidPosition = new PVector(px, py);
     asteroidDirection = inD;
-    asteroidSize = random(11,s/1.5);
+    asteroidSize = random(s/3,s/1.5);
     numAnchors = 6;
     rotAngle = 0;
     anchorsX = new float[numAnchors];
@@ -80,8 +80,8 @@ class Asteroid
   
   void split()
   {
-    asteroids.add(new Asteroid((int)asteroidPosition.x, (int)asteroidPosition.y, asteroidVelocity.x + random(-4,4), asteroidVelocity.y + random(-4,4), asteroidDirection + random(-40,40),asteroidSize));
-    asteroids.add(new Asteroid((int)asteroidPosition.x, (int)asteroidPosition.y, asteroidVelocity.x + random(-4,4), asteroidVelocity.y + random(-4,4), asteroidDirection + random(-40,40),asteroidSize));
+    asteroids.add(new Asteroid((int)asteroidPosition.x, (int)asteroidPosition.y, asteroidVelocity.x + random(-2,2), asteroidVelocity.y + random(-2,2), asteroidDirection + random(-40,40),asteroidSize));
+    asteroids.add(new Asteroid((int)asteroidPosition.x, (int)asteroidPosition.y, asteroidVelocity.x + random(-2,2), asteroidVelocity.y + random(-2,2), asteroidDirection + random(-40,40),asteroidSize));
     die();
   }
   
