@@ -1,6 +1,5 @@
 boolean[] keys;
-class Ship
-{
+class Ship{
   PVector shipAcceleration;
   PVector shipVelocity;
   PVector shipPosition;
@@ -11,8 +10,7 @@ class Ship
   int shipDelayTime;
   float shipMaxSpeed;
   
-  Ship()
-  {
+  Ship(){
     shipAcceleration = new PVector();
     shipVelocity = new PVector();
     shipPosition = new PVector(width/2, height/2);
@@ -20,7 +18,6 @@ class Ship
     shipHealth = 100;
     shipLastFire = 0;
     shipDelayTime = 300;
-    //shipMaxSpeed = 0;
     keys = new boolean[5];
     shipShape = createShape();
     shipShape.beginShape();
@@ -36,16 +33,14 @@ class Ship
     shipShape.endShape();
   }
   
-  void drawShip()
-  {
+  void drawShip(){
     updateShip();
     shipShape.resetMatrix();
     shipShape.rotate(radians(shipDirection));
     shape(shipShape, shipPosition.x, shipPosition.y, 10,10);
   }
   
-  void destroyShip()
-  {
+  void destroyShip(){
     fill(150);
     textAlign(CENTER,CENTER);
     textSize(72);
@@ -53,12 +48,10 @@ class Ship
     text("You Lose",width/2, height/2);
   }
   
-  void updateShip()
-  {
+  void updateShip(){
     shipAcceleration.x = 0;
     shipAcceleration.y = 0;
-    if(keys[0])
-    {
+    if(keys[0]){
       shipAcceleration.x = 0.5 * cos(radians(shipDirection)  - PI/2);
       shipAcceleration.y = 0.5 * sin(radians(shipDirection) - PI/2);
     }
@@ -75,10 +68,8 @@ class Ship
     shipPosition.y %= height;
     if(shipPosition.y < -10)
       {shipPosition.y = height;}
-    if(keys[4])
-    {
-      if(millis() - shipLastFire > shipDelayTime)
-        {
+    if(keys[4]){
+      if(millis() - shipLastFire > shipDelayTime){
           shipLastFire = millis();
           manager.fireBullet(shipPosition, shipVelocity, shipDirection);
         }
@@ -86,10 +77,8 @@ class Ship
   }
 }
 
-void keyPressed()
-{
-   if(key == CODED)
-   {
+void keyPressed(){
+   if(key == CODED){
      if(keyCode == UP)
        keys[0] = true;
      if(keyCode == LEFT)
@@ -99,8 +88,7 @@ void keyPressed()
      if(keyCode == DOWN)
        keys[3] = true;
    }
-   else
-   {
+   else{
      if(key == 'w')
        keys[0] = true;
      if(key == 'a')
@@ -114,10 +102,8 @@ void keyPressed()
    }
 }
 
-void keyReleased()
-{
-   if(key == CODED)
-   {
+void keyReleased(){
+   if(key == CODED){
      if(keyCode == UP)
        keys[0] = false;
      if(keyCode == LEFT)
@@ -127,8 +113,7 @@ void keyReleased()
      if(keyCode == DOWN)
        keys[3] = false;
    }
-   else
-   {
+   else{
      if(key == 'w')
        keys[0] = false;
      if(key == 'a')

@@ -1,0 +1,24 @@
+This version of asteroids was meant to look asthough you 
+were flying around and attacking cells. At the same time,
+I wanted to keep it simple which is why there are only 
+two colors. The celluloid style is shown mainly in the 
+behavoir of the asteroids which are drawn with curved
+vertexs. At first, these vertices were drawn with bezier
+points and then quadratic points, however, neither of 
+those methods worked real well. The outside of the 'cells'
+are animated with perlin noise as slight offsets whose
+purpose is to make the 'cells' appear as though they are 
+alive. The collision detection is accomplished with brute
+force (looping through all of the asteroids and checking
+them with the player and all of the non-hidden bullets),
+although originally I was trying pixel based collision-
+detection with loadPixels()/the pixels array. The pixel
+based collision detection was not fast enough by any means.
+
+Features include:
+ - drifting motion
+ - reuse of bullet object to avoid constant reinstantiation
+ - a lifespan for the bullets
+ - 'cells' that grow and eventually split on their own
+ - curved vertexes
+ - animated outer edges of 'cells'

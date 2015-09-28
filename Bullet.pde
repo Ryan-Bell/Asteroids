@@ -1,5 +1,4 @@
-class Bullet
-{
+class Bullet{
   PVector bulletPosition;
   PVector bulletVelocity;
   boolean bulletHidden;
@@ -8,8 +7,7 @@ class Bullet
   int bulletLifespan;
   int bulletSpeed;
 
-  Bullet()
-  {
+  Bullet(){
     bulletHidden = true;
     bulletSize = 5;
     bulletPosition = new PVector();
@@ -19,15 +17,11 @@ class Bullet
     bulletSpeed = 3;
   }
 
-  void updateBullet()
-  {
-    if (!bulletHidden)
-    {
+  void updateBullet(){
+    if (!bulletHidden){
       bulletPosition.add(bulletVelocity);
       if (millis() - bulletCreationTime > bulletLifespan)
-      {
-        bulletHidden = true;
-      }
+        {bulletHidden = true;}
     bulletPosition.x %= width;
     if(bulletPosition.x < -1)
       {bulletPosition.x = width;}
@@ -37,17 +31,14 @@ class Bullet
     }
   }
 
-  void drawBullet()
-  {
-    if (!bulletHidden)
-    {
+  void drawBullet(){
+    if (!bulletHidden){
       updateBullet();
       ellipse(bulletPosition.x, bulletPosition.y, bulletSize, bulletSize);
     }
   }
 
-  void reset(PVector pos, PVector spe, float direct)
-  {
+  void reset(PVector pos, PVector spe, float direct){
     bulletPosition = new PVector(pos.x + (20 * cos(radians(direct) - PI/2)), pos.y + (20 * sin(radians(direct) - PI/2)));
     bulletVelocity.x = bulletSpeed * cos(radians(direct) - PI/2) + spe.x;
     bulletVelocity.y = bulletSpeed * sin(radians(direct) - PI/2) + spe.y;
