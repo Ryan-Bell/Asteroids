@@ -17,6 +17,12 @@ class GameManager
      bullets = new ArrayList<Bullet>();
      for(int i = 0; i < 20; i++)
        {bullets.add(new Bullet());}
+       
+     for(int i = 0; i < 10; i++)
+     {
+       asteroids.add(new Asteroid((int)random(0,width), (int)random(0,height), random(0,1), random(0,1), random(0,360))); 
+     }
+       
      mothership = new Mothership();
      player = new Ship();
      //cameraPosition = new PVector(width/2, height/2);
