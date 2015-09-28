@@ -52,7 +52,6 @@ class Bullet
     bulletVelocity.x = bulletSpeed * cos(radians(direct) - PI/2) + spe.x;
     bulletVelocity.y = bulletSpeed * sin(radians(direct) - PI/2) + spe.y;
     bulletCreationTime =  millis();
-    //print(bulletVelocity);
     bulletHidden = false;
   }
 }

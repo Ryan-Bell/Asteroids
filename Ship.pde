@@ -60,8 +60,6 @@ class Ship
     if(keys[2] && !keys[1])
       {shipDirection += 5;}
     shipVelocity.add(shipAcceleration);
-    //shipVelocity.x = shipMaxSpeed * (shipVelocity.x/shipVelocity.mag());
-    //shipVelocity.y = shipMaxSpeed * (shipVelocity.y/shipVelocity.mag());
     shipPosition.add(shipVelocity);
     shipVelocity.mult(.95);
     shipPosition.x %= width;
