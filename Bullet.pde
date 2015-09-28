@@ -28,6 +28,12 @@ class Bullet
       {
         bulletHidden = true;
       }
+    bulletPosition.x %= width;
+    if(bulletPosition.x < -1)
+      {bulletPosition.x = width;}
+    bulletPosition.y %= height;
+    if(bulletPosition.y < -1)
+      {bulletPosition.y = height;}
     }
   }
 

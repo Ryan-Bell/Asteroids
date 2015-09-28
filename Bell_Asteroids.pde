@@ -30,7 +30,10 @@ class GameManager
   
   void drawGame()
   {
-    background(0);
+    //background(0);
+    fill(0,50);
+    rect(0,0,width,height);
+    fill(255);
     //player.drawShip();
     //pushMatrix();
     //if(player.shipPosition.x > (cameraPosition.x * 2) - buffer)
@@ -62,6 +65,7 @@ class GameManager
 void setup()
 {
  size(1080,480);
+ background(0);
  manager = new GameManager();
 }
 

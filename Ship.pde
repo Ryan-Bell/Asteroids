@@ -25,7 +25,7 @@ class Ship
     shipShape = createShape();
     shipShape.beginShape();
     shipShape.fill(255);
-    shipShape.strokeWeight(2);
+    shipShape.strokeWeight(1);
     shipShape.vertex(0, -4);
     shipShape.vertex(2,0);
     shipShape.vertex(2,2);
@@ -41,7 +41,7 @@ class Ship
     updateShip();
     shipShape.resetMatrix();
     shipShape.rotate(radians(shipDirection));
-    shape(shipShape, shipPosition.x, shipPosition.y, 20,20);
+    shape(shipShape, shipPosition.x, shipPosition.y, 10,10);
   }
   
 
