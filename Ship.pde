@@ -1,28 +1,29 @@
-boolean[] keys;
+boolean[] keys;                            //The array that will hold the value for key presses
+
 class Ship{
-  PVector shipAcceleration;
-  PVector shipVelocity;
+  PVector shipAcceleration;                //acceleration, velocity, and position vecotrs are used in movement 
+  PVector shipVelocity;                    //of the ship. 
   PVector shipPosition;
-  PShape shipShape;
-  float shipDirection;
-  int shipHealth;
-  int shipLastFire;
-  int shipDelayTime;
-  float shipMaxSpeed;
+  PShape shipShape;                        //The shape of the ship
+  float shipDirection;                     //holds the rotation of the ship from top dead center
+  int shipLastFire;                        //holds the time in millis that the last bullet was fired
+  int shipDelayTime;                       //The delay time in milli seconds between bullet firing
   
+  
+  //The main contructor for the Ship class. It sets the default values for the variables above and creates
+  //the shape of the ship
   Ship(){
     shipAcceleration = new PVector();
     shipVelocity = new PVector();
     shipPosition = new PVector(width/2, height/2);
     shipDirection = 0;
-    shipHealth = 100;
     shipLastFire = 0;
     shipDelayTime = 300;
     keys = new boolean[5];
-    shipShape = createShape();
-    shipShape.beginShape();
-    shipShape.fill(255);
-    shipShape.strokeWeight(1);
+    shipShape = createShape();              //The ship is created with the center at 0,0 and is very small
+    shipShape.beginShape();                 //Creating it at 0,0 ensures that the rotation point is in the center
+    shipShape.fill(255);                    //Creating it very small just gives a bit more control when scaling
+    shipShape.strokeWeight(1);              //the ship up
     shipShape.vertex(0, -4);
     shipShape.vertex(2,0);
     shipShape.vertex(2,2);
@@ -33,6 +34,9 @@ class Ship{
     shipShape.endShape();
   }
   
+  //Handles the drawing of the ship by first updating the physics, then resetting it back to 0,0 with no rotation or scaling
+  //The ship is then rotated based on the rotation variable, and drawn at the position stored in the position vector with 
+  //the appropriate scale.
   void drawShip(){
     updateShip();
     shipShape.resetMatrix();
@@ -40,6 +44,7 @@ class Ship{
     shape(shipShape, shipPosition.x, shipPosition.y, 10,10);
   }
   
+  // Stops the drawing loop and prints a simple message to the screen saying that the player has lost.
   void destroyShip(){
     fill(150);
     textAlign(CENTER,CENTER);
@@ -48,6 +53,9 @@ class Ship{
     text("You Lose",width/2, height/2);
   }
   
+  //adds acceleration if up key is pressed based on direction. Updates roation based on key presses and
+  //adds drag to velocity. It also handles screen wrapping and calls fireBullet if enough time has passed
+  //since the last bullet was fired
   void updateShip(){
     shipAcceleration.x = 0;
     shipAcceleration.y = 0;
