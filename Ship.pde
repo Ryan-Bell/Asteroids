@@ -46,11 +46,24 @@ class Ship{
   
   // Stops the drawing loop and prints a simple message to the screen saying that the player has lost.
   void destroyShip(){
-    fill(150);
+    //TODO Create a better lose screen and prompt the player to play again. Then restart the sketch by calling setup.
     textAlign(CENTER,CENTER);
     textSize(72);
-    noLoop();
-    text("You Lose",width/2, height/2);
+    fill(255);
+    text("You Lose\nPress SPACE to restart",width/2, height/2);
+    fill(170);
+    text("You Lose\nPress SPACE to restart",width/2+1, height/2+1);
+    if(!keys[4]){
+      shouldUpdate = false;
+      fill(255);
+      text("You Lose\nPress SPACE to restart",width/2, height/2);
+      fill(170);
+      text("You Lose\nPress SPACE to restart",width/2+1, height/2+1);
+    }
+    else{
+      shouldUpdate = true;
+      setup();
+    }
   }
   
   //adds acceleration if up key is pressed based on direction. Updates roation based on key presses and
