@@ -2,7 +2,6 @@ ArrayList<Asteroid> asteroids;                            //global variables inc
 ArrayList<Bullet> bullets;
 Ship player;
 GameManager manager;
-boolean shouldUpdate = true;
 
 class GameManager{
   int bulletIndex;                                        //index used in the bullet recycling process
@@ -64,8 +63,5 @@ void setup(){
 }
 
 void draw(){
-  if(shouldUpdate)
-    manager.drawGame();
-  else
-    player.destroyShip();
+  manager.drawGame();
 }
