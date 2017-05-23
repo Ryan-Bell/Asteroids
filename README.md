@@ -4,5 +4,4 @@ This simple [processing](https://processing.org/) sketch was meant to look like 
 
 Collision detection is estimated with the point-sphere method.
 
-<br>
-![example gif](example.gif)
+![example gif](https://github.com/Ryan-Bell/Asteroids/blob/master/example.gif)
