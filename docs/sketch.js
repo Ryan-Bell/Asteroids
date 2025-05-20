@@ -3,6 +3,7 @@ let bullets = [];
 let player;
 let manager;
 let keys = [false, false, false, false, false];
+const SAFE_SPAWN_RADIUS = 100;
 
 class GameManager {
   constructor() {
@@ -11,7 +12,12 @@ class GameManager {
       bullets.push(new Bullet());
     }
     for (let i = 0; i < 10; i++) {
-      asteroids.push(new Asteroid(random(width), random(height), random(1), random(1), random(360)));
+      let px, py;
+      do {
+        px = random(width);
+        py = random(height);
+      } while (dist(px, py, width / 2, height / 2) < SAFE_SPAWN_RADIUS);
+      asteroids.push(new Asteroid(px, py, random(1), random(1), random(360)));
     }
     player = new Ship();
   }
