@@ -14,7 +14,7 @@ class GameManager{
        {bullets.add(new Bullet());}                       //create all bullet objects ahead of time
      for(int i = 0; i < 10; i++)                          //create and place all asteroids
        {asteroids.add(new Asteroid((int)random(0,width), (int)random(0,height), random(0,1), random(0,1), random(0,360)));}
-     player = new Ship();                                //create the plater ship
+    player = new Ship();                                //create the player ship
   }
   
   void drawGame(){                                       //runs once a frame, calls update and handles drawing
