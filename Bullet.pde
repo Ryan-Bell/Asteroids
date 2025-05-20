@@ -45,9 +45,9 @@ class Bullet{
     }
   }
 
-  //This function is called when the bullet is 'dead' and is now being recycled. It handles the restting of the 
-  //applicabel variables. This method of reusing objects and limiting object instantiation was implemented in an 
-  //effort to increase the performance of the game. 
+  //This function is called when the bullet is 'dead' and is being recycled. It handles the resetting of the applicable variables.
+  //This method of reusing objects and limiting object instantiation was implemented in an
+  //effort to increase the performance of the game.
   void reset(PVector pos, PVector spe, float direct){
     bulletPosition = new PVector(pos.x + (20 * cos(radians(direct) - PI/2)), pos.y + (20 * sin(radians(direct) - PI/2)));
     bulletVelocity.x = bulletSpeed * cos(radians(direct) - PI/2) + spe.x;
